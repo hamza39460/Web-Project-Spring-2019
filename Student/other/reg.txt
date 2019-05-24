@@ -1,9 +1,10 @@
+   <!--Registration Form-->
     <div class="limiter" id="regForm">
         <!--LOGIN Container-->
         <div class="container-login100">
             <div class="wrap-login100">
 
-                <!--LOGIN FORM-->
+                <!-- FORM-->
                 <form class="login100-form validate-form">
                     <div class="container" style="display:center;text-align:center;padding-bottom:8px">
                         <img src="images\\personL.png">
@@ -25,12 +26,6 @@
                         <input class="input100" id="rollNo" type="text" name="RollNumber">
                         <span class="focus-input100"></span>
                         <span class="label-input100">Roll Number</span>
-                    </div>
-
-                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" id="email" type="text" name="email">
-                        <span class="focus-input100"></span>
-                        <span class="label-input100">Email</span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">

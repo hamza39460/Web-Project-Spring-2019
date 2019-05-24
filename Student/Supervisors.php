@@ -28,7 +28,7 @@
     <!------ Include the above in your HEAD tag ---------->
     <script>
         $(document).ready(function() {
-        $("#sup").addClass("active");
+            $("#sup").addClass("active");
         });
     </script>
 </head>
@@ -36,12 +36,13 @@
 <body id="supervisors_">
     <?php
     session_start();
-    if(!isset($_SESSION["username"]))
+    if (!isset($_SESSION["username"]))
         header("Location:index.php");
     include "Database//Database.php";
     $db = login();
     $usr = $_SESSION["username"];
     $result = $db->execSelectQuery("Select * from teachers");
+
     ?>
     <div class="notify"><span id="notifyType" class=""></span></div>
     <!--Modal: modalConfirmDelete-->
@@ -84,6 +85,15 @@
                         <textarea tabindex="2" id="projDetails" class="input2" name="Details"></textarea>
                         <span class="focus-input2" data-placeholder="Details"></span>
                     </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
                     <table class="container-login100-form-btn container-request-form-btn">
                         <tbody class="container-login100-form-btn container-request-form-btn">
                             <tr class="container-login100-form-btn container-request-form-btn">
@@ -109,58 +119,69 @@
     include "navBar.html";
     if (mysqli_num_rows($result) > 0) {
         ?>
-        <table class="table table-dark table-hover" class="table1">
-            <thead>
-                <th>Email</th>
-                <th>Name</th>
-                <th>Rating</th>
-                <th>Specialization</th>
-                <th>Send Request</th>
-            </thead>
-            <?php
-            while ($row = mysqli_fetch_array($result)) {
-                ?>
-                <tbody>
-                    <tr class="tr">
-                        <td class="email"><?php echo $row["ID"] ?></td>
-                        <td><?php echo $row["Name"] ?></td>
-                        <td><?php echo $row["Rating"] ?></td>
-                        <td><?php echo $row["Specialization"] ?></td>
-                        <td><span class="sndRequest"> <i class="fa fa-paper-plane"></i></span></td>
-                    </tr>
-                </tbody>
-            <?php
-        }
-    } else {
-        echo (" <span class=\"login100-form-title p-b-43\">No Requests Submitted</span>");
-    }
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100">
+                        <table class="table1">
+                            <thead>
+                                <tr class="table100-head">
+                                    <th>Email</th>
+                                    <th>Name</th>
+                                    <th>Rating</th>
+                                    <th>Specialization</th>
+                                    <th>Send Request</th>
+                                </tr>
+                            </thead>
+                            <?php
+                            while ($row = mysqli_fetch_array($result)) {
+                                ?>
+                                <tbody>
+                                    <tr class="tr">
+                                        <td class="email"><?php echo $row["ID"] ?></td>
+                                        <td><?php echo $row["Name"] ?></td>
+                                        <td><?php echo $row["Rating"] ?></td>
+                                        <td><?php echo $row["Specialization"] ?></td>
+                                        <td><span class="sndRequest"> <i class="fa fa-paper-plane"></i></span></td>
+                                    </tr>
+                                </tbody>
+                            <?php
+                        }
+                    } else {
+                        echo (" <span class=\"login100-form-title p-b-43\">No Requests Submitted</span>");
+                    }
 
-    ?>
-        <!--Functions-->
-        <?php
-        function login()
-        {
-            $db = new database();
-            $db->__init($_SESSION["username"], $_SESSION["pwd"]);
-            $db->startDBConnection();
-            return $db;
-        }
-        ?>
-        <!--===============================================================================================-->
-        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="vendor/animsition/js/animsition.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="vendor/bootstrap/js/popper.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="vendor/select2/select2.min.js"></script>
-        <!--===============================================================================================-->
-        <script src="vendor/daterangepicker/moment.min.js"></script>
-        <script src="vendor/daterangepicker/daterangepicker.js"></script>
-        <!--===============================================================================================-->
-        <script src="vendor/countdowntime/countdowntime.js"></script>
-        <!--===============================================================================================-->
-        <script src="js/main.js"></script>
+                    ?>
+                                        </table>
+                </div>
+                </div>
+                </div>
+                </div>
+                        <!--Functions-->
+                        <?php
+                        function login()
+                        {
+                            $db = new database();
+                            $db->__init($_SESSION["username"], $_SESSION["pwd"]);
+                            $db->startDBConnection();
+                            return $db;
+                        }
+                        ?>
+                        <!--===============================================================================================-->
+                        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="vendor/animsition/js/animsition.min.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="vendor/bootstrap/js/popper.js"></script>
+                        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="vendor/select2/select2.min.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="vendor/daterangepicker/moment.min.js"></script>
+                        <script src="vendor/daterangepicker/daterangepicker.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="vendor/countdowntime/countdowntime.js"></script>
+                        <!--===============================================================================================-->
+                        <script src="js/main.js"></script>
 </body>
 <html>

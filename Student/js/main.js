@@ -1,7 +1,19 @@
 
 (function ($) {
     "use strict";
-    $("#regForm").hide();
+
+    $.ajax({
+        url: 'getProfile.php',
+        type: 'post',
+        success: function(response) {
+            response=response.trim();
+            $("#img1").attr("src", response);        
+        }
+    });
+    function loadImg(){
+ 
+        
+    }
     $("#loading_").hide();
     /*==================================================================
     [click functions]*/
@@ -36,10 +48,6 @@
         
     });
     /*[Signup Btn] */
-    $('#signup').click(function() {
-        $("#loginForm").hide();
-        $("#regForm").show();
-    });
     /*[Login Btn] */
     $('#login').click(function() {
         $("#regForm").hide();
@@ -60,17 +68,19 @@
     var name_;
     var details_;
     $(".sndRequest").click(function () {
-        $("#requestForm").fadeIn(500);
+        $("#requestForm").fadeIn(100);
         var parent=$(this).closest('.tr');
         teacher_=$(parent).children(".email").text();
         
     });
     $("#btncancel").click(function () {
-        $("#requestForm").fadeOut(500);
+        $("#requestForm").fadeOut(100);
     });
 
     $('input[type=file]').change(function(e){
-        $(this).next().html($(this).val());
+        var fileName = $(this).val().replace('C:\\fakepath\\', " ")
+            //replace the "Choose a file" label
+        $(this).next('.custom-file-label').html(fileName);
       });
     $('#btnSendRequest1').click(function() {
        var input = $('.validate-input .input2');
@@ -110,7 +120,7 @@
          teacher_=$(parent).children(".email").text();
     });
     $(".edit").click(function () {  
-        $("#requestForm").fadeIn(500);      
+        $("#requestForm").fadeIn(100);      
         var parent=$(this).closest('.tr');
         teacher_=$(parent).children(".email").text();
         name_=$(parent).children(".name").text();
@@ -118,6 +128,15 @@
         $("#projName").val(name_);
         $("#projDetails").val(details_);
    });
+    $(".sendPaper").click(function () {
+        $("#requestForm").fadeIn(100);
+        var parent = $(this).closest('.tr');
+        teacher_ = $(parent).children(".email").text();
+        name_ = $(parent).children(".name").text();
+        details_ = $(parent).children(".details").text();
+        $("#projName").val(name_);
+        
+    });
     $("#ConfirmModal").click(function(){
         deleteRequest(teacher_);   
         

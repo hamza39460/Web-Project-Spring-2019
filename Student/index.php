@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Login V18</title>
+    <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -32,6 +32,7 @@
     <!--===============================================================================================-->
 
 </head>
+
 <body class="loader" style="background-color: #000000;">
     <!--LOGIN Form-->
     <div class="limiter" id="loginForm">
@@ -86,18 +87,17 @@
                         <input type="button" value="Login" class="login100-form-btn" class="spinner-border" id="login_" name="login_">
                     </div>
 
-                    <div class="text-center p-t-46 p-b-20">
-                        <span id="signup" class="txt2">
+                    <div class="text-center p-t-10 p-b-15">
+                        <a href="reg.php" id="signup" class="txt2">
                             or sign up.
-                        </span>
+                        </a>
                     </div>
-                    
+
                 </form>
             </div>
         </div>
     </div>
-  <!--Registration Form-->
-
+ 
 
 
 

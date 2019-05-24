@@ -25,6 +25,9 @@
         public function getPassword() {
             return $this->password;
         }
+        public function getConnection() {
+            return $this->conn;
+        }
         public function startRootConnection(){
             
         }
@@ -37,6 +40,8 @@
             SESSION_start();
             $_SESSION["username"]=$this->userName; 
             $_SESSION["pwd"]=$this->password;
+            $qry="select profile from flexq.student where ID='$this->userName'";
+            $_SESSION["profile"]=mysqli_fetch_array(mysqli_query($this->conn,$qry))["profile"];
             echo "1";
             }
         }
