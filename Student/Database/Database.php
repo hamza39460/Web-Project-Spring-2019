@@ -61,6 +61,14 @@
                 echo "1";
             
         }
+        public function execQuery1($str){
+            if($this->conn->query($str) === false){
+                return false;
+            }
+            else
+                return true;
+            
+        }
         public function execSelectQuery($str){
              return  $this->conn->query($str);
         }

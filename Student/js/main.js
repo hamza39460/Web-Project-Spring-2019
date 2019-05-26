@@ -135,6 +135,7 @@
         name_ = $(parent).children(".name").text();
         details_ = $(parent).children(".details").text();
         $("#projName").val(name_);
+        $("#supName").val(teacher_);
         
     });
     $("#ConfirmModal").click(function(){
@@ -212,7 +213,6 @@
                 response = $.trim(response);
                 if (response == "1") {
                     successNoti("Done!! Request Updated");
-                    location.reload(true);
                 } else if(response=="0")  {
                     failiureNoti("Sorry Cannot Updated");
                 }
@@ -250,25 +250,25 @@
     }
     function successNoti(Str){
         $("#notifyType").text(Str);
-        $(".notify").addClass("active");
+        $(".notify").addClass("aactive");
         $("#notifyType").addClass("success");
         $(".notify").addClass("notisuccess");
         $(".notify").removeClass("notifailure");
         $("#requestForm").hide();
          setTimeout(function(){
-         $(".notify").removeClass("active");
+         $(".notify").removeClass("aactive");
          $("#notifyType").removeClass("success");
          $(".notify").removeClass("notisuccess");
          },1500);
     }
     function failiureNoti(Str){
         $("#notifyType").text(Str);
-        $(".notify").addClass("active");
+        $(".notify").addClass("aactive");
         $("#notifyType").addClass("failure");
         $(".notify").addClass("notifailure"); 
         $(".notify").removeClass("notisuccess");
         setTimeout(function(){
-        $(".notify").removeClass("active");
+        $(".notify").removeClass("aactive");
         $("#notifyType").removeClass("failure");
         $(".notify").removeClass("notifailure");
         },1500);

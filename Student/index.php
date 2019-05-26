@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
@@ -45,8 +46,8 @@
 
                 <!--LOGIN FORM-->
                 <form class="login100-form validate-form">
-                    <div class="container" style="display:center;text-align:center; padding-bottom:8px;">
-                        <img src="images\\personL.png">
+                <div class="container" style="display:center;text-align:center; padding-bottom:8px;">
+                    <i class="far fa-user" style="font-size:150px;"></i>
                     </div>
                     <span class="login100-form-title p-b-43">
                         Login to continue

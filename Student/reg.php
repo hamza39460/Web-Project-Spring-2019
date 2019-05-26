@@ -35,22 +35,23 @@
 
 <body class="loader" style="background-color: #000000;">
     <!--LOGIN Form-->
-     <!--Registration Form-->
-     <div class="limiter" id="regForm">
+    <!--Registration Form-->
+    <div class="limiter" id="regForm">
         <!--LOGIN Container-->
         <div class="container-login100">
+            <div class="notify"><span id="notifyType" ></span></div>
             <div class="wrap-login100">
 
                 <!-- FORM-->
-                <form method="post" action="#" enctype="multipart/form-data"  class="login100-form validate-form">
-                    <div class="container" style="display:center;text-align:center;padding-bottom:8px">
-                        <img src="images\\personL.png">
+                <form method="post" action="#" enctype="multipart/form-data" class="login100-form validate-form">
+                    <div class="container" style="display:center;text-align:center; padding-bottom:8px;">
+                        <i class="fa fa-users" style="font-size:150px;"></i>
                     </div>
                     <span class="login100-form-title p-b-43">
                         Signup to continue
                     </span>
                     <div class="text-center p-b-10">
-                        <a href="index.php"class="txt2" id="signup">
+                        <a href="index.php" class="txt2" id="signup">
                             or Login.
                         </a>
                     </div>
@@ -71,11 +72,11 @@
                         <span class="label-input100">Password</span>
                     </div>
                     <div class="custom-file">
-                            <input type="file" name="profilePic" id="profilePic" class="custom-file-input" accept="image/*"  aria-describedby="inputGroupFileAddon01">
-                            <label class="custom-file-label" for="inputGroupFile01">Choose Profile Pic</label>
-                    </div>            
+                        <input type="file" name="profilePic" id="profilePic" class="custom-file-input" accept="image/*" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose Profile Pic</label>
+                    </div>
                     <div class="container-login100-form-btn" style="margin-top:8px">
-                        <input  type="submit" value="Login" class="login100-form-btn" id="login_" name="reg">
+                        <input type="submit" value="Login" class="login100-form-btn" id="login_" name="reg">
                     </div>
 
                 </form>
@@ -90,52 +91,77 @@
     </div>
 
     <?php
-        include "Database//Database.php";
-        if(isset($_POST["reg"])){
-            $img=$_FILES['profilePic']["name"];
-            $temp_name  = $_FILES['profilePic']['tmp_name'];
-            $imageFileType = strtolower(pathinfo($img,PATHINFO_EXTENSION));
-            $name=$_POST["name"];
-            $email=$_POST["RollNumber"]."@nu.edu.pk";
-            $password=$_POST["pass"];
-            $uploadOk = 1;
-            $db = new database();
-            $db->startDBConnection();
-            $db=$db->getConnection();
-            $str="CREATE user '$email'@localhost identified by '$password';\n";
-            $rs=mysqli_query($db,$str);
-            if($rs){
-                mkdir("users//$email");
-                $target_file="users//$email//";
-                $target_file=$target_file.$_POST["RollNumber"].".".$imageFileType;
-                if (move_uploaded_file($temp_name, $target_file)) {
-                    //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-                } else {
-                    echo "Sorry, there was an error uploading your file.";
-                }
-                $str="GRANT all PRIVILEGES on flexq.* to '$email'@'localhost'";
-                $rs=mysqli_query($db,$str);
-                echo "alert('$str')";
-                
-                    $str="Insert into flexq.student Values ('$email','$name','$target_file');";
-                    echo $str;
-                    $rs=mysqli_query($db,$str);
-                    if($rs){
-                            ?>
-                            <script type="text/javascript">successNoti("Account Created")</script>
-                            <?php
-                            sleep(1500);
-                            
-                    }
-                
+    include "Database//Database.php";
+    if (isset($_POST["reg"])) {
+        $img = $_FILES['profilePic']["name"];
+        $temp_name  = $_FILES['profilePic']['tmp_name'];
+        $imageFileType = strtolower(pathinfo($img, PATHINFO_EXTENSION));
+        $name = $_POST["name"];
+        $email = $_POST["RollNumber"] . "@nu.edu.pk";
+        $password = $_POST["pass"];
+        $uploadOk = 1;
+        $db = new database();
+        $db->startDBConnection();
+        $db = $db->getConnection();
+        $str = "CREATE user '$email'@localhost identified by '$password';\n";
+        $rs = mysqli_query($db, $str);
+        if ($rs) {
+            mkdir("users//$email");
+            mkdir("users//$email//Submissions");
+            $target_file = "users//$email//";
+            $target_file = $target_file . $_POST["RollNumber"] . "." . $imageFileType;
+            if (move_uploaded_file($temp_name, $target_file)) {
+                //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
             }
-            else{
+            $str = "GRANT all PRIVILEGES on flexq.* to '$email'@'localhost'";
+            $rs = mysqli_query($db, $str);
+            echo "alert('$str')";
+
+            $str = "Insert into flexq.student Values ('$email','$name','$target_file');";
+            echo $str;
+            $rs = mysqli_query($db, $str);
+            if ($rs) {
                 ?>
-                <script type="text/javascript">failiureNoti("User already Exist");</script>
-                <?php
-            }
+                <script>
+                    $("#notifyType").text("Account Created Successfully");
+                    $(".notify").addClass("aactive");
+                    $("#notifyType").addClass("success");
+                    $(".notify").addClass("notisuccess");
+                    $(".notify").removeClass("notifailure");
+                    $("#requestForm").hide();
+                    setTimeout(function() {
+                        $(".notify").removeClass("aactive");
+                        $("#notifyType").removeClass("success");
+                        $(".notify").removeClass("notisuccess");
+                        window.location.href = "index.php";
+                    }, 1500);
+                    
+                </script>
+            <?php
+
         }
-    ?>
+    } else {
+        ?>
+            <script>
+                $("#notifyType").text("User Already Exiss");
+                $(".notify").addClass("aactive");
+                $("#notifyType").addClass("failure");
+                $(".notify").addClass("notifailure");
+                $(".notify").removeClass("notisuccess");
+                 setTimeout(function() {
+                     $(".notify").removeClass("aactive");
+                     $("#notifyType").removeClass("failure");
+                     $(".notify").removeClass("notifailure");
+                     window.location.href = "reg.php";
+                 }, 1500);
+                
+            </script>
+        <?php
+    }
+}
+?>
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->

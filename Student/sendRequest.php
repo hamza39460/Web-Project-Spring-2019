@@ -7,6 +7,7 @@ $student=$_SESSION["username"];
 include "Database//Database.php";
 $db = login();
 $db->execQuery("insert into requests values ('$student','$teacher','$name','$details');");
+mkdir("users//$email//Submissions//$name");
     ?>
  <?php
     function login()

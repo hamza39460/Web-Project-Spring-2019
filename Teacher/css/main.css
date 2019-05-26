@@ -134,7 +134,7 @@ textarea:-ms-input-placeholder { color: #999999;}
 .navBBar{
   background: #6c7ae0;
   padding: 0px;
-  padding-top:8px;
+  padding-top:8px;  
 }
 label {
   display: block;
@@ -149,13 +149,13 @@ a{
   text-decoration: none;
 }
 /*---------------------------------------------*/
-button {
+button{
 	outline: none !important;
 	border: none;
 	background: transparent;
 }
 
-button:hover,input[type=button]:hover,.sndRequest:hover,.dlt:hover,.edit:hover,.nav:hover {
+button:hover,input[type=button]:hover,input[type=submit]:hover,.sndRequest:hover,.dlt:hover,.edit:hover,.nav:hover ,.signup:hover {
   cursor: pointer;
   opacity: 0.8;
 }
@@ -184,7 +184,9 @@ iframe {
   line-height: 1.4;
   color: #999999;
 }
-
+.signup{
+  text-decoration: none;
+}
 
 /*==================================================================
 [ Size ]*/
@@ -208,13 +210,14 @@ iframe {
 [ login ]*/
 .limiter {
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   
 }
 
 .container-login100 {
   width: 100%;  
-  min-height: 100vh;
+  height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -640,10 +643,10 @@ input.input100 {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: transparent /* Black w/ opacity */
 }
 .wrap-request {
+  box-shadow: 10px 10px 10px 10px #888888;
   width: 790px;
   background: #fff;
   border-radius: 10px;
@@ -788,7 +791,10 @@ textarea.input2 + .focus-input2::after {
 }
 
 .active{  
-  height:50px;
+  background-color: #ddfeff69;
+  border-top-width: 8px;
+  border-top-color: #587FFF;
+  border-top-style: solid;
 }
 
 
@@ -798,8 +804,8 @@ textarea.input2 + .focus-input2::after {
 
 .container-table100 {
   width: 100%;
-  min-height: 100vh;
-  background: #c4d3f6;
+  height: 100%;
+  background: #c4d1f6;
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -810,7 +816,16 @@ textarea.input2 + .focus-input2::after {
   justify-content: center;
   flex-wrap: wrap;
   padding: 33px 30px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
+
+/* .container-table100 {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #c4d3f6;
+} */
 
 .wrap-table100 {
   width: 1170px;
@@ -876,11 +891,7 @@ tbody tr {
   font-weight: unset;
 }
 
-tbody tr:hover {
-  color: #555555;
-  background-color: #f5f5f5;
-  cursor: pointer;
-}
+
 
 .column1 {
   width: 260px;
@@ -990,3 +1001,10 @@ tbody tr:hover {
   }
 }
 
+a i,span a{
+  color:gray;
+}
+a i:hover,span i:hover{
+  color: #6c7ae0;
+  cursor: pointer;
+}

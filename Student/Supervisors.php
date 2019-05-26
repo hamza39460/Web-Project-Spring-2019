@@ -89,10 +89,6 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                         </div>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                        </div>
                     </div>
                     <table class="container-login100-form-btn container-request-form-btn">
                         <tbody class="container-login100-form-btn container-request-form-btn">
@@ -128,7 +124,6 @@
                                 <tr class="table100-head">
                                     <th>Email</th>
                                     <th>Name</th>
-                                    <th>Rating</th>
                                     <th>Specialization</th>
                                     <th>Send Request</th>
                                 </tr>
@@ -140,7 +135,6 @@
                                     <tr class="tr">
                                         <td class="email"><?php echo $row["ID"] ?></td>
                                         <td><?php echo $row["Name"] ?></td>
-                                        <td><?php echo $row["Rating"] ?></td>
                                         <td><?php echo $row["Specialization"] ?></td>
                                         <td><span class="sndRequest"> <i class="fa fa-paper-plane"></i></span></td>
                                     </tr>

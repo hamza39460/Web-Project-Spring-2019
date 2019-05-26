@@ -47,7 +47,33 @@
     if (mysqli_num_rows($result) > 0) {
         ?>
         <div class="notify"><span id="notifyType" class=""></span></div>
-        <div class="limiter">
+        <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                <!--Content-->
+                <div class="modal-content text-center">
+                    <!--Header-->
+                    <div class="modal-header d-flex justify-content-center">
+                        <p class="heading">Are you sure?</p>
+                    </div>
+
+                    <!--Body-->
+                    <div class="modal-body">
+                        <i class="fa fa-times fa-4x animated rotateIn"></i>
+                    </div>
+
+                    <!--Footer-->
+                    <div class="modal-footer flex-center">
+                        <input id="ConfirmModal1" type="button" value="Yes" data-dismiss="modal" href="" class="login100-form-btn">
+                        <input id="CancelModal" type="button" value="No" data-dismiss="modal" class="login100-form-btn">
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <div class="limiter" style="background: #c4d1f6;">
+            <div class="col-md-4 text-center container-fluid">
+                <h3>Requests for Submissions</h3>
+            </div>
             <div class="container-table100">
                 <div class="wrap-table100">
                     <div class="table100">
@@ -69,8 +95,8 @@
                                         <td class="email"><?php echo $row["Student"] ?></td>
                                         <td class="name"><?php echo $row["Name"] ?></td>
                                         <td class="details"><?php echo $row["Details"] ?></td>
-                                        <td><span class="add"> <i class="fa fa-check"></i></span></td>
-                                        <td><span class="dlt"> <i data-toggle="modal" data-target="#modalConfirmDelete" class="fa fa-trash-o"></i></span></td>
+                                        <td><span class="add"> <i class="fa fa-check-circle-o fa-2x"></i></span></td>
+                                        <td><span class="dlt1"> <i data-toggle="modal" data-target="#modalConfirmDelete" class="fa fa-trash-o fa-2x"></i></span></td>
                                     </tr>
                                 </tbody>
                             <?php
@@ -81,10 +107,10 @@
                                     <span class="login100-form-title p-b-43">No Requests Submitted</span>
                                 </div>
                             </div>
-                                <?php
-                            }
+                        <?php
+                    }
 
-                            ?>
+                    ?>
                     </table>
                 </div>
             </div>
