@@ -43,7 +43,7 @@
             <div class="wrap-login100">
 
                 <!-- FORM-->
-                <form method="post" action="#" enctype="multipart/form-data" class="login100-form validate-form">
+                <form method="post" id="regForm" action="#" enctype="multipart/form-data" class="login100-form validate-form">
                     <div class="container" style="display:center;text-align:center; padding-bottom:8px;">
                         <i class="fa fa-users" style="font-size:150px;"></i>
                     </div>
@@ -60,10 +60,10 @@
                         <span class="focus-input100"></span>
                         <span class="label-input100">Name</span>
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="Valid Roll Number is Required: xxFxxxx">
+                    <div class="wrap-input100 validate-input" data-validate="Valid Email is Required">
                         <input class="input100" id="rollNo" type="text" name="RollNumber">
                         <span class="focus-input100"></span>
-                        <span class="label-input100">Roll Number</span>
+                        <span class="label-input100">Email</span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
@@ -71,8 +71,8 @@
                         <span class="focus-input100"></span>
                         <span class="label-input100">Password</span>
                     </div>
-                    <div class="custom-file">
-                        <input type="file" name="profilePic" id="profilePic" class="custom-file-input" accept="image/*" aria-describedby="inputGroupFileAddon01">
+                    <div class="custom-file validate-input"  data-validate="Select Picture">
+                        <input type="file" name="profilePic" id="profilePic" class="input100 custom-file-input" accept="image/*" aria-describedby="inputGroupFileAddon01">
                         <label class="custom-file-label" for="inputGroupFile01">Choose Profile Pic</label>
                     </div>
                     <div class="container-login100-form-btn" style="margin-top:8px">
@@ -97,7 +97,7 @@
         $temp_name  = $_FILES['profilePic']['tmp_name'];
         $imageFileType = strtolower(pathinfo($img, PATHINFO_EXTENSION));
         $name = $_POST["name"];
-        $email = $_POST["RollNumber"] . "@nu.edu.pk";
+        $email = $_POST["RollNumber"];
         $password = $_POST["pass"];
         $uploadOk = 1;
         $db = new database();
@@ -111,9 +111,9 @@
             $target_file = "users//$email//";
             $target_file = $target_file . $_POST["RollNumber"] . "." . $imageFileType;
             if (move_uploaded_file($temp_name, $target_file)) {
-                //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+                
             } else {
-                echo "Sorry, there was an error uploading your file.";
+              //  echo "Sorry, there was an error uploading your file.";
             }
             $str = "GRANT all PRIVILEGES on flexq.* to '$email'@'localhost'";
             $rs = mysqli_query($db, $str);

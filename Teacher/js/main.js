@@ -7,6 +7,9 @@
         type: 'post',
         success: function(response) {
             response=response.trim();
+            if(response=="")
+            $("#img1").attr("src", "images//usr.png");
+            else
             $("#img1").attr("src", response);        
         }
     });
@@ -59,7 +62,6 @@
             type: 'post',
             success: function(response) {
                 window.location.href = "index.php";
-                alert(response);
             }
         });
     });
@@ -331,25 +333,25 @@
     }
     function successNoti(Str){
         $("#notifyType").text(Str);
-        $(".notify").addClass("active");
+        $(".notify").addClass("aactive");
         $("#notifyType").addClass("success");
         $(".notify").addClass("notisuccess");
         $(".notify").removeClass("notifailure");
         $("#requestForm").hide();
          setTimeout(function(){
-         $(".notify").removeClass("active");
+         $(".notify").removeClass("aactive");
          $("#notifyType").removeClass("success");
          $(".notify").removeClass("notisuccess");
          },1500);
     }
     function failiureNoti(Str){
         $("#notifyType").text(Str);
-        $(".notify").addClass("active");
+        $(".notify").addClass("aactive");
         $("#notifyType").addClass("failure");
         $(".notify").addClass("notifailure"); 
         $(".notify").removeClass("notisuccess");
         setTimeout(function(){
-        $(".notify").removeClass("active");
+        $(".notify").removeClass("aactive");
         $("#notifyType").removeClass("failure");
         $(".notify").removeClass("notifailure");
         },1500);
@@ -383,6 +385,22 @@
     [ Validate ]*/
 
     
+ $("#regForm").on('submit',function(e){
+        if(checkStdValid()==false)
+        e.preventDefault();
+    });
+    function checkStdValid(){
+        var input = $('.validate-input .input100');
+        var check=true
+        for(var i=0; i<input.length; i++) {
+            if(validate(input[i]) == false){
+                showValidate(input[i]);
+                check=false;
+            }
+        }
+        return check;
+        
+    };
 
     function validate(){
         

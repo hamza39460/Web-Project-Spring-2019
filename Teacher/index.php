@@ -33,6 +33,15 @@
     <!--===============================================================================================-->
 
 </head>
+<?php
+    session_start();
+    if (isset($_SESSION["username"]))
+        {
+            if($_SESSION["usertype"]=="teacher")
+            header("Location:homepage.php");
+        }
+
+?>
 <body class="loader" style="background-color: #000000;">
     <!--LOGIN Form-->
     <div class="limiter" id="loginForm">

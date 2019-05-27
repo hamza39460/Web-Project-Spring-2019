@@ -37,13 +37,21 @@
                 echo "0";
             }
             else{
+            $str = "select * from teachers where ID='" . $this->userName . "';";
+            $rs = mysqli_query($this->conn, $str);
+            if (mysqli_num_rows($rs) <= 0)
+                echo "0";
+            else
+                {
             SESSION_start();
             $_SESSION["username"]=$this->userName; 
             $_SESSION["pwd"]=$this->password;
             $qry="select profile from flexq.teachers where ID='$this->userName'";
             $_SESSION["profile"]=mysqli_fetch_array(mysqli_query($this->conn,$qry))["profile"];
+            $_SESSION["usertype"]="teacher";
             echo "1";
             }
+        }
         }
         public function startDBConnection(){
             $this->conn = mysqli_connect($this->servername, $this->userName, $this->password,$this->db);

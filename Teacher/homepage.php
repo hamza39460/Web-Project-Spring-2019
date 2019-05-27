@@ -1,3 +1,11 @@
+<?php
+session_start();
+include "navBar.html";
+if (!isset($_SESSION["username"]))
+    header("Location:index.php");
+if($_SESSION["usertype"]!="teacher")
+    header("Location:index.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -36,10 +44,7 @@
 
 <body>
     <?php
-    session_start();
-    include "navBar.html";
-    if (!isset($_SESSION["username"]))
-        header("Location:index.php");
+    
     include "Database//Database.php";
     $db = login();
     $usr = $_SESSION["username"];

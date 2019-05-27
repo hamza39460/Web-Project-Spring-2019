@@ -7,6 +7,9 @@
         type: 'post',
         success: function(response) {
             response=response.trim();
+            if(response=="")
+            $("#img1").attr("src", "images//usr.png");        
+            else
             $("#img1").attr("src", response);        
         }
     });
@@ -47,6 +50,8 @@
         }
         
     });
+    
+
     /*[Signup Btn] */
     /*[Login Btn] */
     $('#login').click(function() {
@@ -59,7 +64,6 @@
             type: 'post',
             success: function(response) {
                 window.location.href = "index.php";
-                alert(response);
             }
         });
     });
@@ -324,12 +328,28 @@
         });
     });
 
+    $("#regForm").on('submit',function(e){
+        if(checkStdValid()==false)
+        e.preventDefault();
+    });
+    function checkStdValid(){
+        var input = $('.validate-input .input100');
+        var check=true
+        for(var i=0; i<input.length; i++) {
+            if(validate(input[i]) == false){
+                showValidate(input[i]);
+                check=false;
+            }
+        }
+        return check;
+        
+    };
     function validateEmail(usr) {
         return usr.match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/)
     };
 
     function validate (input) {
-        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
+        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email'|| $(input).attr('name') == 'RollNumber') {
             if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
                 return false;
             }

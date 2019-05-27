@@ -2,6 +2,8 @@
 session_start();
 if (!isset($_SESSION["username"]))
     header("Location:index.php");
+if($_SESSION["usertype"]!="student")
+    header("Location:index.php");
 ?>
 <!DOCTYPE html>
 <html>

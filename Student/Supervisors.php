@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["username"]))
+        header("Location:index.php");
+    if($_SESSION["usertype"]!="student")
+        header("Location:index.php");
+        ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -35,9 +43,6 @@
 
 <body id="supervisors_">
     <?php
-    session_start();
-    if (!isset($_SESSION["username"]))
-        header("Location:index.php");
     include "Database//Database.php";
     $db = login();
     $usr = $_SESSION["username"];

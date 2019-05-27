@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["username"]))
+        header("Location:index.php");
+    if($_SESSION["usertype"]!="teacher")
+        header("Location:index.php")
+        ?>
 <!DOCTYPE html>
 <html>
 
@@ -36,9 +43,6 @@
 
 <body>
     <?php
-    session_start();
-    if (!isset($_SESSION["username"]))
-        header("Location:index.php");
     include "Database//Database.php";
     $db = login();
     $usr = $_SESSION["username"];
@@ -164,24 +168,30 @@
     <!--Functions-->
     <?php
     if(isset($_POST["submit"])){
+
         $name=$_POST["proj"];
         $fileName=$_FILES["file"]["name"];
         $temp_name  = $_FILES['file']['tmp_name'];
         $teacher=$_SESSION["username"];
-        mkdir("users//$teacher//publication//$name");
-        $target_file="users//$teacher//publication//$name//".basename($_FILES["file"]["name"]);
-        $filepath=pathinfo($target_file);
-        $tempfileName=$filepath["filename"];
-        $i=1;
-        while(file_exists( $filepath["dirname"]."//".$tempfileName.".".$filepath['extension'])){
-         $tempfileName=$filepath['filename']." ($i)";
-         $i++;
-        }
-        $target_file="users//$teacher//publication//$name//".$tempfileName.".".$filepath['extension'];
-        if (move_uploaded_file($temp_name, $target_file)){
-            $qry="insert into flexq.publications  values ('$teacher','$name' ,CURRENT_DATE,'$target_file');"; 
-            echo $qry;
-            $db->execQuery1($qry);
+        //echo ("users//$teacher//publication//$name//");
+        $path="users//$teacher//Publications//$name";
+        
+        if(!is_dir($path)){
+            mkdir($path);
+          }
+          $target_file="users//$teacher//Publications//$name//".basename($_FILES["file"]["name"]);
+          $filepath=pathinfo($target_file);
+          $tempfileName=$filepath["filename"];
+          $i=1;
+          while(file_exists( $filepath["dirname"]."//".$tempfileName.".".$filepath['extension'])){
+           $tempfileName=$filepath['filename']." ($i)";
+           $i++;
+          }
+          $target_file="users//$teacher//Publications//$name//".$tempfileName.".".$filepath['extension'];
+          if (move_uploaded_file($temp_name, $target_file)){
+              $qry="insert into flexq.publications  values ('$teacher','$name' ,CURRENT_DATE,'$target_file');"; 
+              $db->execQuery1($qry);
+        
         }
         
     }
