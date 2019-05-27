@@ -90,11 +90,6 @@
                         <textarea tabindex="2" id="projDetails" class="input2" name="Details"></textarea>
                         <span class="focus-input2" data-placeholder="Details"></span>
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                        </div>
-                    </div>
                     <table class="container-login100-form-btn container-request-form-btn">
                         <tbody class="container-login100-form-btn container-request-form-btn">
                             <tr class="container-login100-form-btn container-request-form-btn">
