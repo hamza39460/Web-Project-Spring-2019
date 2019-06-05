@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <script>
         $(document).ready(function() {
@@ -126,7 +126,6 @@
                                 <tr class="table100-head">
                                     <th>Email</th>
                                     <th>Name</th>
-                                    <th>Edit Information</th>
                                     <th>Delete User</th>
                                 </tr>
                             </thead>
@@ -137,7 +136,6 @@
                                     <tr class="tr">
                                         <td class="email"><?php echo $row["ID"] ?></td>
                                         <td><?php echo $row["Name"] ?></td>
-                                        <td><span class="editSup"> <i class="fa fa-pencil-square-o"></i></span></td>
                                         <td><span class="dlt"> <i data-toggle="modal" data-target="#modalConfirmDelete" class="fa fa-trash-o"></i></span></td>
                                     </tr>
                                 </tbody>

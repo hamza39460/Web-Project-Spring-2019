@@ -30,14 +30,14 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <script>
         $(document).ready(function() {
             $("#res").addClass("active");
         });
     </script>
-
+    <title>My Research</title>
 </head>
 
 <body>

@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <script>
         $(document).ready(function() {
@@ -191,8 +191,11 @@
           if (move_uploaded_file($temp_name, $target_file)){
               $qry="insert into flexq.publications  values ('$teacher','$name' ,CURRENT_DATE,'$target_file');"; 
               $db->execQuery1($qry);
-        
-        }
+              ?>
+              <script>window.location.href = "publications.php";</script>
+              <?php
+
+        }   
         
     }
     function login()

@@ -1,7 +1,7 @@
 <?php
 session_start();
-$teacher=$_POST["teacher"];
-$student=$_SESSION["username"];
+$student=$_POST["student"];
+$teacher=$_SESSION["username"];
 include "Database//Database.php";
 $db = login();
 $db->execQuery("delete from supervision where teacher='$teacher' AND Student='$student';");

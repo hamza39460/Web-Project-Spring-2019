@@ -130,7 +130,7 @@
    });
    $(".dlt2").click(function () {        
     var parent=$(this).closest('.tr');
-    teacher_=$(parent).children(".email").text();
+        student_=$(parent).children(".email").text();
     });
     $(".add").click(function () {  
             $("#requestForm").fadeIn(100);      
@@ -173,7 +173,7 @@
         
     }); 
     $("#ConfirmModal2").click(function(){
-        deleteRequest2(teacher_);   
+        deleteRequest2(student_);   
         
     });  
     /*===================================================================
@@ -308,13 +308,13 @@
         });
     }
 
-    function deleteRequest2(teacher){
+    function deleteRequest2(student){
         var msg = "";
         $.ajax({
             url: 'deleteRequest2.php',
             type: 'post',
             data: {
-                teacher:teacher
+                student:student
             },
             success: function(response) {
 
